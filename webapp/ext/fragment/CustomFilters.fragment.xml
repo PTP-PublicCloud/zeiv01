@@ -1,0 +1,64 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" xmlns:core="sap.ui.core">
+    <smartfilterbar:ControlConfiguration id='controlConfigurationSourceType' key="SourceType" index="1" visibleInAdvancedArea="true" label="Source Document" groupId="_BASIC">
+        <smartfilterbar:customControl>
+            <Select id="selectSourceType"
+                    change="onChangeSourceType"
+                    wrapItemsText="true" >
+                <core:Item key="BILL" text="Billing" />
+                <core:Item key="PO" text="PO" />
+                <core:Item key="FI" text="Other" />
+            </Select>
+        </smartfilterbar:customControl>
+    </smartfilterbar:ControlConfiguration>
+
+    <smartfilterbar:ControlConfiguration id='controlConfigurationAllBillingDetail' key="AllBillingDetail" index="999" visibleInAdvancedArea="true" label="Group Item" groupId="_BASIC">
+        <smartfilterbar:customControl>
+            <VBox >
+                <!-- <Label text="Hiện thi item" labelFor="groupItemFormat" /> -->
+                <RadioButtonGroup id="groupItemFormat">
+                    <RadioButton id="chkAllBillingDetail" text="Hiển thị Item chi tiết" selected="true" />
+                    <RadioButton id="chkBillingGeneral" text="Hiển thị Item chung" />
+                </RadioButtonGroup>                  
+            </VBox>
+        </smartfilterbar:customControl>
+    </smartfilterbar:ControlConfiguration>    
+
+    <smartfilterbar:ControlConfiguration id='controlConfigurationDisplayItemOption' index="999" key='DispNSX' visibleInAdvancedArea="true" label="Item display option" groupId="_BASIC">
+        <smartfilterbar:customControl>
+            <VBox >        
+                <CheckBox id="chkBillingAltUnit" text="Hiển thị số lượng quy đổi"/>            
+                <CheckBox id="chkDispNSX" text="Hiển thị nước sản xuất " select="onChangeChkDispNSX"/>            
+                <CheckBox id="chkDispValueDV" text="Hiển thị ĐVT, số lượng, đơn giá cho hóa đơn dịch vụ" wrapping="true" select="onChangeChkDispValueDV"/>            
+            </VBox>
+        </smartfilterbar:customControl>
+    </smartfilterbar:ControlConfiguration>    
+    
+ 
+    <smartfilterbar:ControlConfiguration id='controlConfigurationLoaiHoaDon' key="LoaiHoaDon" index="998" visibleInAdvancedArea="true" label="Nghiệp vụ xuất hóa đơn" groupId="_BASIC">
+        <smartfilterbar:customControl>
+            <VBox >
+                <!-- <Label text="Hiện thi item" labelFor="groupItemFormat" /> -->
+                <RadioButtonGroup id="groupLoaiHoaDon">
+                    <RadioButton id="radHoaDonBan" text="Phát hành hóa đơn mới" selected="true" />
+                    <RadioButton id="radHoaDonDieuChinh" text="Hoá đơn điều chỉnh" />
+                    <RadioButton id="radHoaDonThayThe" text="Hoá đơn thay thế " />
+                    <RadioButton id="radHuyHoaDon" text="Huỷ hoá đơn" />
+                    <RadioButton id="radXemDanhSach" text="Xem danh sách" />
+                </RadioButtonGroup>           
+            </VBox>
+        </smartfilterbar:customControl>
+    </smartfilterbar:ControlConfiguration>
+
+    <smartfilterbar:ControlConfiguration id='controlConfigurationNumberFormatType' key="NumberFormatTyp" index="998" visibleInAdvancedArea="true" label="Number format" groupId="_BASIC">
+        <smartfilterbar:customControl>
+            <Select
+                id="selNumberFormat"
+				forceSelection="true"
+				items="{
+					path: '/ZEINV_I_DEBCREVH'
+				}">
+				<core:Item key="{type}" text="{description}" />
+            </Select>
+        </smartfilterbar:customControl>
+    </smartfilterbar:ControlConfiguration>      
+</core:FragmentDefinition>

@@ -1,0 +1,10 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:codeeditor="sap.ui.codeeditor">
+    <Dialog id="htmlDialog">
+        <c:HTML 
+            content='{data>/html}'>
+	    </c:HTML>
+    </Dialog>
+</c:FragmentDefinition>

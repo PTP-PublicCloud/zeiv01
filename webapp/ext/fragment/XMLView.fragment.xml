@@ -1,0 +1,8 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:codeeditor="sap.ui.codeeditor">
+    <Dialog id="xmlDialog">
+        <codeeditor:CodeEditor width="25%" height="50%" id='codeEditorXMl' type="XML" editable="false" value="xml"/>
+    </Dialog>
+</c:FragmentDefinition>
