@@ -87,26 +87,62 @@ sap.ui.define([
 
         },
         editableBillingFilter(mode) {
+            
+            /* Hiện tham số cho Billing */
             this.byId(BILLINGDOCUMENTFILTERID).setEditable(mode)
             this.byId(BILLINGTYPEFILTERID).setEditable(mode)
             this.byId(SALESOFFICEFILTERID).setEditable(mode)
             this.byId(SALESGROUPFILTERID).setEditable(mode)
             this.getView().byId('controlConfigurationAllBillingDetail').setVisible(mode)
-            this.getView().byId('controlConfigurationLoaiHoaDon').setVisible(mode)
+            this.getView().byId('controlConfigLoaiHoaDon').setVisible(mode)
+            this.getView().byId('radHoaDonDieuChinh').setVisible(mode)
+            this.getView().byId('radHoaDonThayThe').setVisible(mode)
+
+            let hide = !mode
+            /* Ẩn tham số thuộc PO, FI */
+            this.byId(ACCOUNTINGDOCUMENTFILTERID).setEditable(hide)
+            this.byId(VENDORFILTERID).setEditable(hide)
+            this.byId(PURCHASEORDERFILTERID).setEditable(hide)
         },
         editableFiFilter(mode) {
+            /* Hiện tham số thuộc FI */
             this.byId(ACCOUNTINGDOCUMENTFILTERID).setEditable(mode)
-        },
-        editableFiPOFilter(mode) {
-            this.byId(VENDORFILTERID).setEditable(mode)
+            this.getView().byId('controlConfigLoaiHoaDon').setVisible(mode)
+
+            /* Ẩn tham số thuộc BIll, PO */
+            let hide = !mode
+            this.byId(BILLINGDOCUMENTFILTERID).setEditable(hide)
+            this.byId(BILLINGTYPEFILTERID).setEditable(hide)
+            this.byId(SALESOFFICEFILTERID).setEditable(hide)
+            this.byId(SALESGROUPFILTERID).setEditable(hide)
+            this.getView().byId('controlConfigurationAllBillingDetail').setVisible(hide)
+            this.getView().byId('radHoaDonDieuChinh').setVisible(hide)
+            this.getView().byId('radHoaDonThayThe').setVisible(hide)
+            this.byId(VENDORFILTERID).setEditable(hide)
+            this.byId(PURCHASEORDERFILTERID).setEditable(hide)
         },
         editablePOFilter(mode) {
+            /* Hiện tham số thuộc PO */
+            this.byId(VENDORFILTERID).setEditable(mode)
             this.byId(PURCHASEORDERFILTERID).setEditable(mode)
+
+            /* Ẩn tham số thuộc Bill, FI */
+            let hide = !mode
+            this.byId(BILLINGDOCUMENTFILTERID).setEditable(hide)
+            this.byId(BILLINGTYPEFILTERID).setEditable(hide)
+            this.byId(SALESOFFICEFILTERID).setEditable(hide)
+            this.byId(SALESGROUPFILTERID).setEditable(hide)
+            this.getView().byId('controlConfigurationAllBillingDetail').setVisible(hide)
+            this.getView().byId('controlConfigLoaiHoaDon').setVisible(hide)
+            this.byId(ACCOUNTINGDOCUMENTFILTERID).setEditable(hide)     
+
         },
         onInitSmartFilterBarExtension: function (oSource) {
             console.log(oSource.getSource()._oFiltersButton.sId)
             this.byId(oSource.getSource()._oFiltersButton.sId).setVisible(false)
-            this.editableFiFilter(false)
+
+            /* Default Billing khi vào chức năng */
+            this.editableBillingFilter(true)
         },
         onBeforeRebindTableExtension: function (oSource) {
             // let oCheckBoxMaHuy = this.getView().byId("chkBoxDisplayMaHuy");
@@ -172,29 +208,20 @@ sap.ui.define([
             }
         },
         onChangeSourceType: function (oSource) {
-
-            if (oSource.getSource().getSelectedKey() !== 'BILL') {
-                this.editableBillingFilter(false)
-            } else if (oSource.getSource().getSelectedKey() == 'BILL') {
-                this.editableBillingFilter(true)
-            }
-
-            if (oSource.getSource().getSelectedKey() !== 'FI') {
-                this.editableFiFilter(false)
-            } else if (oSource.getSource().getSelectedKey() == 'FI') {
-                this.editableFiFilter(true)
-            }
-
-            if (oSource.getSource().getSelectedKey() !== 'PO') {
-                this.editablePOFilter(false)
-            } else if (oSource.getSource().getSelectedKey() == 'PO') {
-                this.editablePOFilter(true)
-            }
-
-            if (oSource.getSource().getSelectedKey() !== 'FI' && oSource.getSource().getSelectedKey() !== 'PO') {
-                this.editableFiPOFilter(false)
-            } else {
-                this.editableFiPOFilter(true)
+            /* Change source type - Nguồn hoá đơn : FI - PO - BILLING */
+            switch (oSource.getSource().getSelectedKey()) {
+                case 'BILL':
+                    this.editableBillingFilter(true)
+                    break;
+                case 'FI':
+                    this.editableFiFilter(true)
+                    if (this.getView().byId('radHoaDonDieuChinh').getSelected() == true || this.getView().byId('radHoaDonThayThe').getSelected() == true ) {
+                        this.getView().byId('radHoaDonBan').setSelected(true)
+                    }
+                    break;
+                case 'PO':
+                    this.editablePOFilter(true)
+                    break;
             }
         },
         callAPIEInvoice: function (element) {

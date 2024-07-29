@@ -11,7 +11,7 @@
         </smartfilterbar:customControl>
     </smartfilterbar:ControlConfiguration>
 
-    <smartfilterbar:ControlConfiguration id='controlConfigurationAllBillingDetail' key="AllBillingDetail" index="999" visibleInAdvancedArea="true" label="Group Item" groupId="_BASIC">
+    <smartfilterbar:ControlConfiguration id='controlConfigurationAllBillingDetail' key="AllBillingDetail" index="800" visibleInAdvancedArea="true" label="Group Item" groupId="_BASIC">
         <smartfilterbar:customControl>
             <VBox >
                 <!-- <Label text="Hiện thi item" labelFor="groupItemFormat" /> -->
@@ -23,7 +23,7 @@
         </smartfilterbar:customControl>
     </smartfilterbar:ControlConfiguration>    
 
-    <smartfilterbar:ControlConfiguration id='controlConfigurationDisplayItemOption' index="999" key='DispNSX' visibleInAdvancedArea="true" label="Item display option" groupId="_BASIC">
+    <smartfilterbar:ControlConfiguration id='controlConfigurationDisplayItemOption' index="801" key='DispNSX' visibleInAdvancedArea="true" label="Item display option" groupId="_BASIC">
         <smartfilterbar:customControl>
             <VBox >        
                 <CheckBox id="chkBillingAltUnit" text="Hiển thị số lượng quy đổi"/>            
@@ -33,8 +33,7 @@
         </smartfilterbar:customControl>
     </smartfilterbar:ControlConfiguration>    
     
- 
-    <smartfilterbar:ControlConfiguration id='controlConfigurationLoaiHoaDon' key="LoaiHoaDon" index="998" visibleInAdvancedArea="true" label="Nghiệp vụ xuất hóa đơn" groupId="_BASIC">
+    <smartfilterbar:ControlConfiguration id='controlConfigLoaiHoaDon' key="LoaiHoaDon" index="802" visibleInAdvancedArea="true" label="Nghiệp vụ xuất hóa đơn" groupId="_BASIC">
         <smartfilterbar:customControl>
             <VBox >
                 <!-- <Label text="Hiện thi item" labelFor="groupItemFormat" /> -->
@@ -49,7 +48,7 @@
         </smartfilterbar:customControl>
     </smartfilterbar:ControlConfiguration>
 
-    <smartfilterbar:ControlConfiguration id='controlConfigurationNumberFormatType' key="NumberFormatTyp" index="998" visibleInAdvancedArea="true" label="Number format" groupId="_BASIC">
+    <smartfilterbar:ControlConfiguration id='controlConfigurationNumberFormatType' key="NumberFormatTyp" index="803" visibleInAdvancedArea="true" label="Number format" groupId="_BASIC">
         <smartfilterbar:customControl>
             <Select
                 id="selNumberFormat"
