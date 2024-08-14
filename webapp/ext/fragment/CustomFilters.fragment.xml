@@ -28,7 +28,9 @@
             <VBox >        
                 <CheckBox id="chkBillingAltUnit" text="Hiển thị số lượng quy đổi"/>            
                 <CheckBox id="chkDispNSX" text="Hiển thị nước sản xuất " select="onChangeChkDispNSX"/>            
-                <CheckBox id="chkDispValueDV" text="Hiển thị ĐVT, số lượng, đơn giá cho hóa đơn dịch vụ" wrapping="true" select="onChangeChkDispValueDV"/>            
+                <CheckBox id="chkDispValueDV" text="Hiển thị Số lượng, đơn giá cho hóa đơn dịch vụ" wrapping="true" select="onChangeChkDispValueDV"/>            
+                <CheckBox id="chkDispDvtDV" text="Hiển thị ĐVT cho hóa đơn dịch vụ" wrapping="true" select="onChangeChkDispDvtDV"/>            
+                <CheckBox id="chkDispCK" text="Hiển thị Chiết khấu" wrapping="true" select="onChangeChkDispCK"/>            
             </VBox>
         </smartfilterbar:customControl>
     </smartfilterbar:ControlConfiguration>    

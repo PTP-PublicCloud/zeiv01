@@ -155,6 +155,8 @@ sap.ui.define([
             // chkDispNSX
             let chkDispNSX = this.getView().byId('chkDispNSX').getSelected()
             let chkDispValueDV = this.getView().byId('chkDispValueDV').getSelected()
+            let chkDispDvtDV = this.getView().byId('chkDispDvtDV').getSelected()
+            let chkDispCK = this.getView().byId('chkDispCK').getSelected()
 
             //Loại nghiệp vụ hoá đơn
             let radHoaDonBan = this.getView().byId('radHoaDonBan').getSelected()
@@ -176,7 +178,9 @@ sap.ui.define([
             oBindingParams.filters.push(new Filter('BillingGeneral', 'EQ', `${chkBillingGeneral}`))
             oBindingParams.filters.push(new Filter('BillingAltUnit', 'EQ', `${chkBillingAltUnit}`))
             oBindingParams.filters.push(new Filter('DispNSX', 'EQ', `${chkDispNSX}`))
-            oBindingParams.filters.push(new Filter('DispValueDV', 'EQ', `${chkDispValueDV}`))
+            oBindingParams.filters.push(new Filter('DispValueDV', 'EQ', `${chkDispValueDV}` ))
+            oBindingParams.filters.push(new Filter('DispDvtDV', 'EQ', `${chkDispDvtDV}`))
+            oBindingParams.filters.push(new Filter('DispCK', 'EQ', `${chkDispCK}`))
             oBindingParams.filters.push(new Filter('NumberFormatType', 'EQ', `${chkNumberFormatType}`))
 
             switch(true) {
@@ -354,6 +358,14 @@ sap.ui.define([
         onChangeChkDispValueDV: function(oSource){
             let chkDispValueDV = this.getView().byId('chkDispValueDV').getSelected()
             localStorage.setItem("chkDispValueDV", chkDispValueDV);
+        },
+        onChangeChkDispDvtDV: function(oSource){
+            let chkDispDvtDV = this.getView().byId('chkDispDvtDV').getSelected()
+            localStorage.setItem("chkDispDvtDV", chkDispDvtDV);
+        },
+        onChangeChkDispCK: function(oSource){
+            let chkDispCK = this.getView().byId('chkDispCK').getSelected()
+            localStorage.setItem("chkDispCK", chkDispCK);
         }
     }
 }

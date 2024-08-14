@@ -20,6 +20,6 @@ builder:
           name: ZEINV_HDDT
           description: "[ABAP]_NganNM_09.01.2023_Create HDDT"
           package: ZPK_EINV_HOADON
-          transport: ZFCK901797
+          transport: ZFCK901854
         exclude:
           - /test/
