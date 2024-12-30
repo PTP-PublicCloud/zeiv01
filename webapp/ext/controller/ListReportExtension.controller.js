@@ -312,8 +312,13 @@ sap.ui.define([
                     thatController.zeinvhddtBusyDialog.close()
                 })
                 .catch((error) => {
-                    MessageBox.error(JSON.stringify(error))
-                    thatController.zeinvhddtBusyDialog.close()
+                    if (error.status == 500) {
+                        thatController.zeinvhddtBusyDialogObject.close()
+                        document.write(error.responseText)
+                    } else {
+                        thatController.zeinvhddtBusyDialogObject.close()
+                        MessageBox.error(JSON.stringify(error))
+                    }
                 })
         },
         onActionCancel: function(oSource){
@@ -347,8 +352,13 @@ sap.ui.define([
                     thatController.getView().getModel().refresh()
                 })
                 .catch((error) => {
-                    MessageBox.error(JSON.stringify(error))
-                    thatController.zeinvhddtBusyDialog.close()
+                    if (error.status == 500) {
+                        thatController.zeinvhddtBusyDialogObject.close()
+                        document.write(error.responseText)
+                    } else {
+                        thatController.zeinvhddtBusyDialogObject.close()
+                        MessageBox.error(JSON.stringify(error))
+                    }
                 })
         },
         onChangeChkDispNSX: function(oSource){

@@ -146,8 +146,14 @@ sap.ui.define([
             })
             readEntity
             .catch((value)=>{
-                thatControllerObject.zeinvhddtBusyDialogObject.close()
-                MessageBox.error(JSON.stringify(value))
+                if (value.status == 500) {
+                    thatControllerObject.zeinvhddtBusyDialogObject.close()
+                    document.write(value.responseText)
+                } else {
+                    thatControllerObject.zeinvhddtBusyDialogObject.close()
+                    MessageBox.error(JSON.stringify(value))
+                }
+
             })
         },
         onActionReviewXML:function(oSouce){
@@ -209,11 +215,17 @@ sap.ui.define([
             })
             readEntity
             .catch((value)=>{
-                thatControllerObject.zeinvhddtBusyDialogObject.close()
-                MessageBox.error(JSON.stringify(value))
+                if (value.status == 500) {
+                    thatControllerObject.zeinvhddtBusyDialogObject.close()
+                    document.write(value.responseText)
+                } else {
+                    thatControllerObject.zeinvhddtBusyDialogObject.close()
+                    MessageBox.error(JSON.stringify(value))
+                }
+
             })
         },
-        on  :function(oEvent){
+        onActionDownloadPublishedPDF :function(oEvent){
             let entityPath = this.getView().getBindingContext().getDeepPath()
             let oModel = this.getView().getModel()
             let thatControllerObject = this
@@ -278,8 +290,13 @@ sap.ui.define([
             })
             readEntity
             .catch((value)=>{
-                thatControllerObject.zeinvhddtBusyDialogObject.close()
-                MessageBox.error(JSON.stringify(value))
+                if (value.status == 500) {
+                    thatControllerObject.zeinvhddtBusyDialogObject.close()
+                    document.write(value.responseText)
+                } else {
+                    thatControllerObject.zeinvhddtBusyDialogObject.close()
+                    MessageBox.error(JSON.stringify(value))
+                }
             })            
         }
     }
